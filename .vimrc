@@ -1,7 +1,7 @@
 " Use the Solarized Dark theme
-set background=dark
+"set background=dark
 "colorscheme solarized
-let g:solarized_termtrans=1
+"let g:solarized_termtrans=1
 
 " Make Vim more useful
 set nocompatible
@@ -34,6 +34,7 @@ endif
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Respect modeline in files
 "set modeline
 "set modelines=4
@@ -49,8 +50,10 @@ set cursorline
 " Make tabs as wide as two spaces
 set tabstop=4
 " Show “invisible” characters
+" lcs stands for Special Key Highlighting
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
+" Disable by: set nolist
 " Highlight searches
 set hlsearch
 " Ignore case of searches
@@ -83,6 +86,8 @@ set showcmd
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
+"open every file you open in a vertical split on the right side
+"set splitright
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
@@ -126,16 +131,34 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 Plugin 'preservim/nerdtree'
+
+Plugin 'FuzzyFinder'
+
+Plugin 'dracula/vim',{'name':'dracula'}
+
+Plugin 'Valloric/YouCompleteMe'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+Plugin 'jremmen/vim-ripgrep'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+"
+Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'yssl/QFEnter'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+colorscheme dracula
+"let g:NERDTreeWinPos = "right"
+"let g:NERDTreeWinSize = 15
 filetype plugin indent on    " required
+let g:fzf_action = { 'enter': 'tab split' }
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
